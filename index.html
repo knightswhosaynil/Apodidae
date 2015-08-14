@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Apodidae : Swift dependency Injection Framework">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Apodidae</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/knightswhosaynil/Apodidae">View on GitHub</a>
+
+          <h1 id="project_title">Apodidae</h1>
+          <h2 id="project_tagline">Swift dependency Injection Framework</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/knightswhosaynil/Apodidae/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/knightswhosaynil/Apodidae/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="apodidae" class="anchor" href="#apodidae" aria-hidden="true"><span class="octicon octicon-link"></span></a>Apodidae</h1>
+
+<h3>
+<a id="swift-dependency-injection-framework" class="anchor" href="#swift-dependency-injection-framework" aria-hidden="true"><span class="octicon octicon-link"></span></a>Swift Dependency Injection Framework</h3>
+
+<p>With Swift 2.0 and <a href="https://developer.apple.com/videos/wwdc/2015/?id=408">this talk </a> from Apple,
+protocol oriented programming has now arrived on the Cocoa scene.  Although protocols allow for
+elegant decoupling of interface from implementation, a little extra glue (in the form of 
+<a href="http://www.martinfowler.com/articles/injection.html">Dependecy Injection</a>) cements the ideal of
+never having to know if your <a href="https://en.wikipedia.org/wiki/Duck_typing">duck is actually a duck</a></p>
+
+<h3>
+<a id="name" class="anchor" href="#name" aria-hidden="true"><span class="octicon octicon-link"></span></a>Name</h3>
+
+<p><a href="https://en.wikipedia.org/wiki/Swift">Apodidae</a> is the taxonomic family of birds known as swifts
+in english.  Is your swift a sooty swift or a lesser swallow tail swift?  You don't care! that's
+why you're using dependency injection, obviously...</p>
+
+<h3>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h3>
+
+<p>Have a protocol that needs filling? add <code>Injectable</code> to your implementation:</p>
+
+<div class="highlight highlight-swift"><pre><span class="pl-k">protocol</span> Swift {
+  <span class="pl-k">func</span> <span class="pl-en">airspeedVelocity</span>() <span class="pl-k">-&gt;</span> <span class="pl-c1">Int</span>
+}
+
+<span class="pl-k">struct</span> WhiteThroatedNeedleTail: Swift, Injectable {
+  <span class="pl-k">static</span> <span class="pl-k">func</span> dependencies <span class="pl-k">-&gt;</span> [<span class="pl-c1">Any</span>] {
+    <span class="pl-k">return</span> []
+  }
+
+  <span class="pl-k">init</span>(dependencies: [Injectable]) {}
+
+  <span class="pl-k">func</span> <span class="pl-en">airspeedVelocity</span>() <span class="pl-k">-&gt;</span> <span class="pl-c1">Int</span> {
+    <span class="pl-k">return</span> <span class="pl-c1">169</span>
+  }
+}</pre></div>
+
+<p>and register with the registrar:</p>
+
+<div class="highlight highlight-swift"><pre><span class="pl-k">import</span> <span class="pl-c1">Apodidae</span>
+
+<span class="pl-k">@UIApplicationMain</span>
+<span class="pl-k">class</span> AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
+
+  <span class="pl-k">func</span> <span class="pl-en">application</span>(application: UIApplication, didFinishLaunchingWithOptions <span class="pl-smi">launchOptions</span>: [NSObject: <span class="pl-c1">AnyObject</span>]?) <span class="pl-k">-&gt;</span> <span class="pl-c1">Bool</span> {
+    <span class="pl-c">// init application</span>
+    <span class="pl-k">...</span>
+    registerDependencies()
+  }
+
+  <span class="pl-k">func</span> <span class="pl-en">registerDependencies</span>() <span class="pl-k">-&gt;</span> <span class="pl-c1">Void</span> {
+    <span class="pl-k">let</span> registrar <span class="pl-k">=</span> Registrar<span class="pl-k">.</span>instance
+    <span class="pl-c">// NOTE: Implementation MUST implement the Injectable protocol</span>
+    <span class="pl-c">// NOTE: Currently registration is not type safe - you could register a nonconforming class</span>
+    registrar<span class="pl-k">.</span>register(Swift<span class="pl-k">.</span><span class="pl-k">self</span>, WhiteThroatedNeedleTail<span class="pl-k">.</span><span class="pl-k">self</span>)
+  }
+}</pre></div>
+
+<p>Instances of your protocol can then be grabbed from the registrar:</p>
+
+<div class="highlight highlight-swift"><pre><span class="pl-k">struct</span> Thingy {
+  <span class="pl-k">let</span> swift <span class="pl-k">=</span> Registrar<span class="pl-k">.</span>instance<span class="pl-k">.</span>obtain(Swift<span class="pl-k">.</span><span class="pl-k">self</span>) <span class="pl-k">as!</span> Swift
+
+  <span class="pl-k">func</span> <span class="pl-en">howFastAreMyBirds</span>() <span class="pl-k">-&gt;</span> <span class="pl-c1">Int</span> {
+    <span class="pl-k">return</span> <span class="pl-k">self</span><span class="pl-k">.</span>swift<span class="pl-k">.</span>airspeedVelocity()
+  }
+}</pre></div>
+
+<p>But what if my dependencies have dependencies??  Apodidae will resolve the chained dependencies 
+before providing you the implementation:</p>
+
+<div class="highlight highlight-swift"><pre><span class="pl-k">protocol</span> BirdCage: Injectable {
+  <span class="pl-k">func</span> <span class="pl-en">howFastAreMyBirds</span>() <span class="pl-k">-&gt;</span> <span class="pl-c1">Int</span>
+}
+
+<span class="pl-k">struct</span> Thingy: BirdCage {
+  <span class="pl-k">let</span> swift: Swift
+
+  <span class="pl-k">static</span> <span class="pl-k">func</span> dependencies <span class="pl-k">-&gt;</span> [<span class="pl-c1">Any</span>] {
+    <span class="pl-k">return</span> [
+      Swift<span class="pl-k">.</span><span class="pl-k">self</span> <span class="pl-c">// defines the type dependency on a swift</span>
+    ]
+  }
+
+  <span class="pl-k">init</span>(dependencies: [Injectable]) {
+    <span class="pl-c">// Dependencies are returned in the same order you specified</span>
+    <span class="pl-k">self</span><span class="pl-k">.</span>swift <span class="pl-k">=</span> dependencies[<span class="pl-c1">0</span>] <span class="pl-k">as!</span> Swift
+  }
+
+  <span class="pl-k">func</span> <span class="pl-en">howFastAreMyBirds</span>() <span class="pl-k">-&gt;</span> <span class="pl-c1">Int</span> {
+    <span class="pl-k">return</span> <span class="pl-k">self</span><span class="pl-k">.</span>swift<span class="pl-k">.</span>airspeedVelocity()
+  }
+}</pre></div>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Apodidae maintained by <a href="https://github.com/knightswhosaynil">knightswhosaynil</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
