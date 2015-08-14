@@ -10,6 +10,9 @@
 		5F04D2A81B7D43F400135CCC /* Apodidae.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F04D2A71B7D43F400135CCC /* Apodidae.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5F04D2AF1B7D43F400135CCC /* Apodidae.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F04D2A41B7D43F400135CCC /* Apodidae.framework */; };
 		5F04D2B41B7D43F400135CCC /* ApodidaeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F04D2B31B7D43F400135CCC /* ApodidaeTests.swift */; };
+		5F04D2C11B7D444400135CCC /* Injectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F04D2BE1B7D444400135CCC /* Injectable.swift */; };
+		5F04D2C31B7D444400135CCC /* InjectionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F04D2BF1B7D444400135CCC /* InjectionError.swift */; };
+		5F04D2C51B7D444400135CCC /* Registrar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F04D2C01B7D444400135CCC /* Registrar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +32,9 @@
 		5F04D2AE1B7D43F400135CCC /* ApodidaeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ApodidaeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F04D2B31B7D43F400135CCC /* ApodidaeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodidaeTests.swift; sourceTree = "<group>"; };
 		5F04D2B51B7D43F400135CCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5F04D2BE1B7D444400135CCC /* Injectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Injectable.swift; sourceTree = "<group>"; };
+		5F04D2BF1B7D444400135CCC /* InjectionError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InjectionError.swift; sourceTree = "<group>"; };
+		5F04D2C01B7D444400135CCC /* Registrar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Registrar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +77,9 @@
 		5F04D2A61B7D43F400135CCC /* Apodidae */ = {
 			isa = PBXGroup;
 			children = (
+				5F04D2BE1B7D444400135CCC /* Injectable.swift */,
+				5F04D2BF1B7D444400135CCC /* InjectionError.swift */,
+				5F04D2C01B7D444400135CCC /* Registrar.swift */,
 				5F04D2A71B7D43F400135CCC /* Apodidae.h */,
 				5F04D2A91B7D43F400135CCC /* Info.plist */,
 			);
@@ -142,6 +151,7 @@
 		5F04D29B1B7D43F400135CCC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Knights Who Say Nil";
 				TargetAttributes = {
@@ -193,6 +203,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F04D2C31B7D444400135CCC /* InjectionError.swift in Sources */,
+				5F04D2C51B7D444400135CCC /* Registrar.swift in Sources */,
+				5F04D2C11B7D444400135CCC /* Injectable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,6 +320,7 @@
 		5F04D2B91B7D43F400135CCC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -317,12 +331,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.knightswhosaynil.Apodidae;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		5F04D2BA1B7D43F400135CCC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
