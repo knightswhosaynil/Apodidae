@@ -21,7 +21,7 @@ class RegistrarSpec: QuickSpec {
             }
             
             context("when nothing is registered") {
-                it("must return nothing") {
+                it("returns nothing") {
                     let proto = registrar.obtain(ProtoA.self)
                     expect(proto).to(beNil())
                 }
@@ -35,19 +35,19 @@ class RegistrarSpec: QuickSpec {
                     registrar.register(ProtoC.self, implementation: ImplementationC.self)
                 }
                 
-                it("must save registrations") {
+                it("saves registrations") {
                     let impl = ImplementationA.self
                     expect { registrar.concreteType(ProtoA.self) == impl }.to(beTruthy())
                 }
                 
-                it("must return simple instances") {
+                it("returns simple instances") {
                     let proto = registrar.obtain(ProtoA.self) as? ProtoA
                     
                     expect(proto).notTo(beNil())
                     expect(proto!.hello()).to(equal(ImplementationA.NAME))
                 }
             
-                it("must return chained instances") {
+                it("returns chained instances") {
                     let proto = registrar.obtain(ProtoB.self) as? ProtoB
                     
                     expect(proto).notTo(beNil())
@@ -57,14 +57,14 @@ class RegistrarSpec: QuickSpec {
                     expect(implB?.protoA.hello()).to(equal(ImplementationA.NAME))
                 }
                 
-                it("must inject third party protocols") {
+                it("injects third party protocols") {
                     let proto = registrar.obtain(ProtoC.self) as? ProtoC
                     
                     expect(proto).notTo(beNil())
                     expect(proto!.hello()).to(equal(ImplementationC.NAME))
                 }
                 
-                it("must overwrite registrations") {
+                it("overwrites registrations") {
                     registrar.register(ProtoC.self, implementation: OtherImplementationC.self)
                     
                     let proto = registrar.obtain(ProtoC.self) as? ProtoC
