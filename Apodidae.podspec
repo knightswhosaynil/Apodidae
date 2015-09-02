@@ -17,14 +17,15 @@ Pod::Spec.new do |s|
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!  
   s.description      = <<-DESC
-Dependency Injection framework for Protocol Oriented Programming
+Dependency Injection framework for Protocol Oriented Programming.
+Allows for Protocol based injection of both reference (`class`) and value (`struct`) types
                        DESC
 
   s.homepage         = "https://knightswhosaynil.github.io/Apodidae/"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'Apache 2.0'
   s.author           = { "Johnathan Raymond" => "johnathan.raymond@knightswhosaynil.com" }
-  s.source           = { :git => "https://github.com/knightswhosaynil/Apodidae", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/knightswhosaynil/Apodidae.git", :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.platform     = :ios, '8.0'
