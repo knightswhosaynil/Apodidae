@@ -14,9 +14,23 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5F04D2A31B7D43F400135CCC"
-               BuildableName = "Apodidae.framework"
-               BlueprintName = "Apodidae"
+               BlueprintIdentifier = "607FACCF1AFB9204008FA782"
+               BuildableName = "Apodidae_Example.app"
+               BlueprintName = "Apodidae_Example"
+               ReferencedContainer = "container:Apodidae.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "607FACE41AFB9204008FA782"
+               BuildableName = "Apodidae_Tests.xctest"
+               BlueprintName = "Apodidae_Tests"
                ReferencedContainer = "container:Apodidae.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +46,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5F04D2AD1B7D43F400135CCC"
-               BuildableName = "ApodidaeTests.xctest"
-               BlueprintName = "ApodidaeTests"
+               BlueprintIdentifier = "607FACE41AFB9204008FA782"
+               BuildableName = "Apodidae_Tests.xctest"
+               BlueprintName = "Apodidae_Tests"
                ReferencedContainer = "container:Apodidae.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -42,9 +56,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5F04D2A31B7D43F400135CCC"
-            BuildableName = "Apodidae.framework"
-            BlueprintName = "Apodidae"
+            BlueprintIdentifier = "607FACCF1AFB9204008FA782"
+            BuildableName = "Apodidae_Example.app"
+            BlueprintName = "Apodidae_Example"
             ReferencedContainer = "container:Apodidae.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -61,15 +75,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5F04D2A31B7D43F400135CCC"
-            BuildableName = "Apodidae.framework"
-            BlueprintName = "Apodidae"
+            BlueprintIdentifier = "607FACCF1AFB9204008FA782"
+            BuildableName = "Apodidae_Example.app"
+            BlueprintName = "Apodidae_Example"
             ReferencedContainer = "container:Apodidae.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -79,15 +94,16 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5F04D2A31B7D43F400135CCC"
-            BuildableName = "Apodidae.framework"
-            BlueprintName = "Apodidae"
+            BlueprintIdentifier = "607FACCF1AFB9204008FA782"
+            BuildableName = "Apodidae_Example.app"
+            BlueprintName = "Apodidae_Example"
             ReferencedContainer = "container:Apodidae.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
