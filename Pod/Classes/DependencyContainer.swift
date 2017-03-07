@@ -21,5 +21,4 @@ public struct DependencyContainer {
         let dependency = dependencies[ObjectIdentifier(aProtocol)]
         return dependency as? T
     }
-    
 }

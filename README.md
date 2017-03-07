@@ -13,11 +13,11 @@ protocol Swift {
 }
 
 struct WhiteThroatedNeedleTail: Swift, Injectable {
-  static func dependencies -> [Any] {
+  static func dependencies -> [Any.Type] {
     return []
   }
 
-  init(dependencies: [Injectable]) {}
+  init(dependencies: DependencyContainer) {}
 
   func airspeedVelocity() -> Int {
     return 169
@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
   func registerDependencies() -> Void {
     let registrar = Registrar.instance
     // NOTE: Implementation MUST implement the Injectable protocol
-    // NOTE: Currently registration is not type safe - you could register a nonconforming class
+    // NOTE: Currently registration is not type safe - you could register a nonconforming class, which will fail at runtime
     registrar.register(Swift.self, WhiteThroatedNeedleTail.self)
   }
 }
@@ -70,9 +70,9 @@ struct Thingy: BirdCage {
     ]
   }
 
-  init(dependencies: [Injectable]) {
+  init(dependencies: DependencyContainer) {
     // Dependencies are returned in the same order you specified
-    self.swift = dependencies[0] as! Swift
+    self.swift = dependencies.extract(Swift.self)
   }
 
   func howFastAreMyBirds() -> Int {
