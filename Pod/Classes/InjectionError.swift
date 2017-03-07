@@ -8,6 +8,7 @@
 
 import Foundation
 
-public enum InjectionError: ErrorType {
-    case UnsatisfiedDependency
+public enum InjectionError: Error {
+    case unsatisfiedDependency
+    case invalidCast
 }

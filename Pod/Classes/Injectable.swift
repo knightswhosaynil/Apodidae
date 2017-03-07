@@ -3,32 +3,32 @@
 //  Apodidae
 //
 //  Created by Johnathan D Raymond on 8/10/15.
-//  Copyright © 2015 Knights Who Say Nil. All rights reserved.
+//  Copyright © 2015 KnightsWhoSayNil. All rights reserved.
 //
 
 import Foundation
 
 public protocol Injectable {
     static func create() throws -> Self
-    static func dependencies() -> [Any]
-    static func create(dependencies:[Injectable]) -> Self
-    init(dependencies: [Injectable])
+    static func dependencies() -> [Any.Type]
+    static func create(_ dependencies:DependencyContainer) -> Self
+    init(dependencies: DependencyContainer)
 }
 
 public extension Injectable {
     public static func create() throws -> Self {
-        var dependencyImplementations = [Injectable]()
+        var dependencyImplementations = [ObjectIdentifier: Injectable]()
         for aProtocol in dependencies() {
             if let dependency = Registrar.instance.obtain(aProtocol) {
-                dependencyImplementations.append(dependency)
+                dependencyImplementations.updateValue(dependency, forKey: ObjectIdentifier(aProtocol))
             } else {
-                throw InjectionError.UnsatisfiedDependency
+                throw InjectionError.unsatisfiedDependency
             }
         }
-        return create(dependencyImplementations)
+        return create(DependencyContainer(dependencies: dependencyImplementations))
     }
     
-    public static func create(dependencies: [Injectable]) -> Self {
+    public static func create(_ dependencies: DependencyContainer) -> Self {
         return Self(dependencies: dependencies)
     }
 }

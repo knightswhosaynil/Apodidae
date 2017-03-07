@@ -1,20 +1,22 @@
 PODS:
   - Apodidae (0.1.0)
-  - Nimble (2.0.0-rc.3)
-  - Quick (0.6.0)
+  - Nimble (6.0.1)
+  - Quick (1.1.0)
 
 DEPENDENCIES:
   - Apodidae (from `../`)
-  - Nimble (= 2.0.0-rc.3)
-  - Quick (~> 0.6.0)
+  - Nimble (= 6.0.1)
+  - Quick (~> 1.1.0)
 
 EXTERNAL SOURCES:
   Apodidae:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Apodidae: 24074db0244f1c2e12303a6afc40d670f58f486a
-  Nimble: 9dff98ee195ffe7351d3b2fb01d3a1420fd97948
-  Quick: 563686dbcf0ae0f9f7401ac9cd2d786ee1b7f3d7
+  Apodidae: 7e6fc75b936c74b377d8dd1740bee873821c8ad8
+  Nimble: 1527fd1bd2b4cf0636251a36bc8ab37e81da8347
+  Quick: dafc587e21eed9f4cab3249b9f9015b0b7a7f71d
 
-COCOAPODS: 0.38.2
+PODFILE CHECKSUM: 93a70446aa22cb1cd569372bcacbe17ee8ec9da0
+
+COCOAPODS: 1.2.0
