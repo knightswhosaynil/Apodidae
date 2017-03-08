@@ -83,11 +83,11 @@ public protocol ProtoA: Injectable {
 
 public final class ImplementationA : ProtoA {
     public static let NAME = "ImplementationA"
-    public static func dependencies() -> [Any] {
-        return [Any]()
+    public static func dependencies() -> [Any.Type] {
+        return [Any.Type]()
     }
     
-    required public init(dependencies: [Injectable]) {
+    required public init(dependencies: DependencyContainer) {
         
     }
     
@@ -99,7 +99,7 @@ public final class ImplementationA : ProtoA {
 public protocol ProtoB : Injectable {}
 
 public final class ImplementationB : ProtoB {
-    public static func dependencies() -> [Any] {
+    public static func dependencies() -> [Any.Type] {
         return [
             ProtoA.self
         ]
@@ -107,8 +107,8 @@ public final class ImplementationB : ProtoB {
     
     public let protoA: ProtoA
     
-    required public init(dependencies: [Injectable]) {
-        protoA = dependencies[0] as! ProtoA
+    required public init(dependencies: DependencyContainer) {
+        protoA = dependencies.extract(ProtoA.self)!
     }
 }
 
@@ -119,7 +119,7 @@ public protocol ProtoC {
 public final class ImplementationC : ProtoC, Injectable {
     public static let NAME = "ImplementationC"
 
-    public static func dependencies() -> [Any] {
+    public static func dependencies() -> [Any.Type] {
         return []
     }
     
@@ -127,14 +127,14 @@ public final class ImplementationC : ProtoC, Injectable {
         return ImplementationC.NAME
     }
     
-    required public init(dependencies: [Injectable]) {
+    required public init(dependencies: DependencyContainer) {
     }
 }
 
 public final class OtherImplementationC: ProtoC, Injectable {
     public static let NAME = "OtherImplementationC"
     
-    public static func dependencies() -> [Any] {
+    public static func dependencies() -> [Any.Type] {
         return []
     }
     
@@ -142,7 +142,7 @@ public final class OtherImplementationC: ProtoC, Injectable {
         return OtherImplementationC.NAME
     }
     
-    required public init(dependencies: [Injectable]) {
+    required public init(dependencies: DependencyContainer) {
     }
 }
 

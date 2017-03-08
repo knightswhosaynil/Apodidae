@@ -2,12 +2,11 @@
 //  InjectionError.swift
 //  Apodidae
 //
-//  Created by Johnathan D Raymond on 8/13/15.
-//  Copyright © 2015 Knights Who Say Nil. All rights reserved.
+//  Copyright © 2017 KnightsWhoSayNil. All rights reserved.
 //
 
 import Foundation
 
-public enum InjectionError: ErrorType {
-    case UnsatisfiedDependency
+public enum InjectionError: Error {
+    case unsatisfiedDependency
 }

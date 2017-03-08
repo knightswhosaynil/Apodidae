@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "Apodidae"
-  s.version          = "0.1.0"
+  s.version          = "0.2.0"
   s.summary          = "Dependency Injection framework for Protocol Oriented Programming"
 
 # This description is used to generate tags and improve search results.
@@ -36,7 +36,4 @@ Allows for Protocol based injection of both reference (`class`) and value (`stru
     'Apodidae' => ['Pod/Assets/*.png']
   }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
 end
